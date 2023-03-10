@@ -53,6 +53,24 @@ public:
 		Temp->pNext = New;
 		
 	}
+	//					Removing elements:
+	void pop_front()
+	{
+		Element* buffer = Head;
+		Head = Head->pNext;
+		delete buffer;
+
+	}
+	void pop_back()
+	{
+		if (Head == nullptr)return;
+		if (Head->pNext == nullptr)return pop_front();
+		Element* Temp = Head;
+		while (Temp->pNext->pNext)Temp = Temp->pNext;
+		delete Temp->pNext;
+		Temp->pNext = nullptr;
+		
+	}
 		/// Metods
 	void Print()const
 	{
@@ -74,10 +92,15 @@ void main()
 	ForwardList list;
 	for (int i = 0; i < n; i++)
 	{
-		//list.push_front(rand() % 100);
-		list.push_back(rand() % 100);
+		list.push_front(rand() % 100);
+		//list.push_back(rand() % 100);
 	}
 	list.Print();
 	//list.push_back(132);
 	//list.Print();
+	list.pop_front();
+	list.Print();
+	list.pop_back();
+	list.Print();
+
 }
