@@ -19,7 +19,7 @@ class List
 			cout << "EDestructor:\t" << this << endl;
 		}
 		friend class List;
-	}*Head, * Tail;
+	}*Head, *Tail;
 	unsigned int size;
 	class ConstBaseIterator
 	{
@@ -40,7 +40,6 @@ class List
 		{
 			return Temp->Data;
 		}
-		
 	};
 public:
 	class ConstIterator :public ConstBaseIterator
@@ -82,7 +81,6 @@ public:
 			Temp = Temp->pPrev;
 			return old;
 		}
-
 	};
 	class ConstReverseIterator : public ConstBaseIterator
 	{
@@ -137,13 +135,13 @@ public:
 	};
 	class ReverseIterator :public ConstReverseIterator
 	{
+	public:
 		ReverseIterator(Element* Temp):ConstReverseIterator(Temp){}
 		~ReverseIterator(){}
 		int& operator*()
 		{
 			return Temp->Data;
 		}
-
 	};
 
 	ConstIterator begin()const
